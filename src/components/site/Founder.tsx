@@ -28,7 +28,7 @@ const leaders: Leader[] = [
     initials: "RV",
   },
   {
-    name: "Varha Dhaketa",
+    name: "Varsha Dhaketa",
     role: "Co-Founder & Full Stack Developer",
     bio: "Leads product engineering across web and mobile. Translates real operational workflows into resilient, beautifully crafted product experiences.",
     expertise: [
