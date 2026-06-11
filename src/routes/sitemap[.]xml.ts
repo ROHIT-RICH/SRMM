@@ -7,38 +7,49 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/about", changefreq: "monthly", priority: "0.8" },
-          { path: "/contact", changefreq: "monthly", priority: "0.7" },
-          { path: "/case-studies", changefreq: "weekly", priority: "0.8" },
-          { path: "/crm", changefreq: "monthly", priority: "0.8" },
-          { path: "/hrms", changefreq: "monthly", priority: "0.8" },
-          { path: "/saas-development", changefreq: "monthly", priority: "0.8" },
-          { path: "/web-development", changefreq: "monthly", priority: "0.8" },
-          { path: "/mobile-app-development", changefreq: "monthly", priority: "0.8" },
-          { path: "/custom-software", changefreq: "monthly", priority: "0.8" },
-          { path: "/business-automation", changefreq: "monthly", priority: "0.8" },
+        const pages = [
+          "/",
+          "/about",
+          "/contact",
+          "/case-studies",
+          "/crm",
+          "/hrms",
+          "/saas-development",
+          "/web-development",
+          "/mobile-app-development",
+          "/custom-software",
+          "/business-automation",
+          "/privacy-policy",
+          "/terms-and-conditions",
+          "/refund-policy",
+          "/cookie-policy",
+          "/security-policy",
+          "/founders",
         ];
 
-        const urls = entries.map(
-          (e) => `
+        const urls = pages
+          .map(
+            (page) => `
   <url>
-    <loc>${BASE_URL}${e.path}</loc>
-    <changefreq>${e.changefreq}</changefreq>
-    <priority>${e.priority}</priority>
+    <loc>${BASE_URL}${page}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${page === "/" ? "1.0" : "0.8"}</priority>
   </url>`
-        );
+          )
+          .join("");
 
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join("\n")}
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
 </urlset>`;
 
         return new Response(xml, {
+          status: 200,
           headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "public, max-age=3600",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "no-cache, no-store, must-revalidate",
           },
         });
       },
