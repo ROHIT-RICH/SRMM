@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsAndConditionsRouteImport } from './routes/terms-and-conditions'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap.xml.ts'
 import { Route as SecurityPolicyRouteImport } from './routes/security-policy'
 import { Route as RefundPolicyRouteImport } from './routes/refund-policy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
@@ -33,11 +32,6 @@ import { Route as ProductsAutoDealerErpRouteImport } from './routes/products/aut
 const TermsAndConditionsRoute = TermsAndConditionsRouteImport.update({
   id: '/terms-and-conditions',
   path: '/terms-and-conditions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SecurityPolicyRoute = SecurityPolicyRouteImport.update({
@@ -144,7 +138,6 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/security-policy': typeof SecurityPolicyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/products/auto-dealer-erp': typeof ProductsAutoDealerErpRoute
   '/products/crm': typeof ProductsCrmRoute
@@ -166,7 +159,6 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/security-policy': typeof SecurityPolicyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/products/auto-dealer-erp': typeof ProductsAutoDealerErpRoute
   '/products/crm': typeof ProductsCrmRoute
@@ -189,7 +181,6 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/refund-policy': typeof RefundPolicyRoute
   '/security-policy': typeof SecurityPolicyRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-and-conditions': typeof TermsAndConditionsRoute
   '/products/auto-dealer-erp': typeof ProductsAutoDealerErpRoute
   '/products/crm': typeof ProductsCrmRoute
@@ -213,7 +204,6 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-policy'
     | '/security-policy'
-    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/products/auto-dealer-erp'
     | '/products/crm'
@@ -235,7 +225,6 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-policy'
     | '/security-policy'
-    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/products/auto-dealer-erp'
     | '/products/crm'
@@ -257,7 +246,6 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/refund-policy'
     | '/security-policy'
-    | '/sitemap.xml'
     | '/terms-and-conditions'
     | '/products/auto-dealer-erp'
     | '/products/crm'
@@ -280,7 +268,6 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   RefundPolicyRoute: typeof RefundPolicyRoute
   SecurityPolicyRoute: typeof SecurityPolicyRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsAndConditionsRoute: typeof TermsAndConditionsRoute
   ProductsAutoDealerErpRoute: typeof ProductsAutoDealerErpRoute
   ProductsCrmRoute: typeof ProductsCrmRoute
@@ -300,13 +287,6 @@ declare module '@tanstack/react-router' {
       path: '/terms-and-conditions'
       fullPath: '/terms-and-conditions'
       preLoaderRoute: typeof TermsAndConditionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/security-policy': {
@@ -448,7 +428,6 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   RefundPolicyRoute: RefundPolicyRoute,
   SecurityPolicyRoute: SecurityPolicyRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsAndConditionsRoute: TermsAndConditionsRoute,
   ProductsAutoDealerErpRoute: ProductsAutoDealerErpRoute,
   ProductsCrmRoute: ProductsCrmRoute,
